@@ -18,7 +18,10 @@ export default function Header() {
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
-    smoothScrollTo(href, () => setIsOpen(false))
+    // Cerrar menú inmediatamente
+    setIsOpen(false)
+    // Iniciar scroll
+    smoothScrollTo(href)
   }
 
   return (
@@ -55,7 +58,7 @@ export default function Header() {
 
           {/* Mobile Menu */}
           {isOpen && (
-              <div className="absolute top-full left-0 right-0 glass border-b border-border/30 p-4 flex flex-col gap-4 md:hidden">
+              <div className="absolute top-full left-0 right-0 glass border-b border-border/30 p-4 flex flex-col gap-4 md:hidden transition-all duration-200">
                 {navItems.map((item) => (
                     <Link
                         key={item.href}

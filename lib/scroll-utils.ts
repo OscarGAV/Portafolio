@@ -6,34 +6,44 @@ export const smoothScrollTo = (targetId: string, callback?: () => void) => {
             callback()
         }
 
-        // Pequeño timeout para permitir que el menú se cierre y la página se reajuste
-        setTimeout(() => {
-            const targetPosition = element.getBoundingClientRect().top + window.pageYOffset
-            const startPosition = window.pageYOffset
-            const distance = targetPosition - startPosition
-            const duration = 1000 // Reducido a 1 segundo para mayor fluidez
-            let start: number | null = null
+        // Detectar si es dispositivo móvil (pantalla menor a 768px, breakpoint md de Tailwind)
+        const isMobile = window.innerWidth < 768
 
-            const animation = (currentTime: number) => {
-                if (start === null) start = currentTime
-                const timeElapsed = currentTime - start
-                const run = ease(timeElapsed, startPosition, distance, duration)
-                window.scrollTo(0, run)
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation)
+        if (isMobile) {
+            // En móvil: scroll instantáneo sin animación
+            setTimeout(() => {
+                element.scrollIntoView({ behavior: 'auto', block: 'start' })
+            }, 100) // Pequeño delay para que el menú se cierre
+        } else {
+            // En desktop: scroll suave con animación
+            setTimeout(() => {
+                const targetPosition = element.getBoundingClientRect().top + window.pageYOffset
+                const startPosition = window.pageYOffset
+                const distance = targetPosition - startPosition
+                const duration = 1000
+                let start: number | null = null
+
+                const animation = (currentTime: number) => {
+                    if (start === null) start = currentTime
+                    const timeElapsed = currentTime - start
+                    const run = ease(timeElapsed, startPosition, distance, duration)
+                    window.scrollTo(0, run)
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation)
+                    }
                 }
-            }
 
-            // Función de easing para suavizar la animación
-            const ease = (t: number, b: number, c: number, d: number) => {
-                t /= d / 2
-                if (t < 1) return (c / 2) * t * t + b
-                t--
-                return (-c / 2) * (t * (t - 2) - 1) + b
-            }
+                // Función de easing para suavizar la animación
+                const ease = (t: number, b: number, c: number, d: number) => {
+                    t /= d / 2
+                    if (t < 1) return (c / 2) * t * t + b
+                    t--
+                    return (-c / 2) * (t * (t - 2) - 1) + b
+                }
 
-            requestAnimationFrame(animation)
-        }, 50) // 50ms de delay para permitir que el DOM se actualice
+                requestAnimationFrame(animation)
+            }, 50)
+        }
     } else if (callback) {
         callback()
     }

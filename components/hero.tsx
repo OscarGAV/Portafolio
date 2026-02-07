@@ -6,11 +6,15 @@ import React, { useState } from "react"
 import { smoothScrollTo } from "@/lib/scroll-utils"
 
 export default function Hero() {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isToggled, setIsToggled] = useState(false)
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault()
     smoothScrollTo(id)
+  }
+
+  const handleIconClick = () => {
+    setIsToggled(!isToggled)
   }
 
   return (
@@ -21,10 +25,13 @@ export default function Hero() {
 
         <div className="max-w-4xl mx-auto z-10 text-center space-y-8">
           {/* Tech illustration placeholder */}
-          <div className="w-32 h-32 mx-auto mb-8">
+          <div
+              className="w-32 h-32 mx-auto mb-8 cursor-pointer"
+              onClick={handleIconClick}
+          >
             <div className="relative w-full h-full">
               <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/20 to-neon-violet/20 rounded-lg blur-xl"></div>
-              <div className="absolute inset-0 glass rounded-lg flex items-center justify-center">
+              <div className="absolute inset-0 glass rounded-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
                 <code className="text-3xl font-mono font-bold text-transparent bg-gradient-to-r from-neon-cyan to-neon-violet bg-clip-text">
                   {"{ }"}
                 </code>
@@ -32,26 +39,23 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Hoverable title section */}
-          <div
-              className="transition-all duration-500 ease-in-out cursor-pointer mt-8"
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
-          >
+          {/* Title section */}
+          <div className="transition-all duration-500 ease-in-out mt-8">
             {/* Headline with transition */}
             <div className="space-y-4 relative min-h-[200px] md:min-h-[280px]">
               <h1 className="text-5xl md:text-7xl font-bold leading-tight">
-              <span className={`inline-block transition-all duration-500 ${isHovered ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
-                Desarrollador de <br />
-                <span className="text-transparent bg-gradient-to-r from-neon-cyan via-primary to-neon-violet bg-clip-text">
-                  Software
-                </span>
-              </span>
-                <span className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+              <span className={`inline-block transition-all duration-500 ${isToggled ? 'opacity-0 translate-y-4' : 'opacity-100 translate-y-0'}`}>
                 <span className="text-transparent bg-gradient-to-r from-neon-violet via-primary to-neon-cyan bg-clip-text">
                   Oscar Gabriel
                 </span>
+                <br />
                 <span>Aranda Vallejos</span>
+              </span>
+                <span className={`absolute inset-0 flex flex-col items-center justify-center transition-all duration-500 ${isToggled ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'}`}>
+                Software <br />
+                <span className="text-transparent bg-gradient-to-r from-neon-cyan via-primary to-neon-violet bg-clip-text">
+                  Developer
+                </span>
               </span>
               </h1>
             </div>

@@ -31,19 +31,19 @@ export default function About() {
 
           {/* Description */}
           <div className="space-y-6">
-            <p className="text-lg text-muted-foreground leading-relaxed">
+            <p className="text-lg text-muted-foreground leading-relaxed text-center">
               Soy un estudiante de Ingeniería de Software enfocado en crear aplicaciones modernas y sistemas escalables que estén
               orientados a las necesidades del usuario.
             </p>
             <div className="pt-4">
-              <p className="text-sm uppercase tracking-widest text-neon-cyan font-semibold mb-4">
+              <p className="text-sm uppercase tracking-widest text-neon-cyan font-semibold mb-4 text-center">
                 Habilidades Técnicas
               </p>
               <div className="space-y-3">
                 {skills.map((skill) => (
-                  <div key={skill.category} className="space-y-2">
+                  <div key={skill.category} className="space-y-2 text-center">
                     <p className="text-sm font-semibold text-foreground">{skill.category}</p>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 align-center justify-center">
                       {skill.items.map((item) => (
                         <span
                           key={item}

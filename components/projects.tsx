@@ -5,25 +5,25 @@ import { ExternalLink } from "lucide-react"
 export default function Projects() {
   const projects = [
     {
-      title: "E-commerce Moderno",
+      title: "Smart Band - ESP32 System",
       description:
-        "Plataforma de comercio electrónico con carrito dinámico, búsqueda avanzada y sistema de pagos integrado.",
-      technologies: ["React", "Node.js", "Stripe", "MongoDB"],
-      link: "#",
-      github: "#",
-      image: "/e-commerce-platform-dashboard.jpg",
+        "Simulación de un sistema IoT para el monitoreo de frecuencia cardíaca",
+      technologies: ["C", "C++", "Wokwi"],
+      link: "https://wokwi.com/projects/446657341757965313",
+      github: "https://github.com/OscarGAV/SmartBand-ESP32-System",
+      image: "/smart-band-esp32-system.png",
     },
     {
-      title: "Dashboard Analytics",
+      title: "Smart Band - Edge API",
       description:
-        "Sistema de analytics en tiempo real con gráficos interactivos, exportación de datos y visualizaciones customizables.",
-      technologies: ["Next.js", "TypeScript", "Recharts", "PostgreSQL"],
-      link: "#",
-      github: "#",
-      image: "/analytics-dashboard-charts.jpg",
+        "API REST para el monitoreo de frecuencia cardíaca en tiempo real. Encargado de recibir y almacenar las lecturas del smart band funcionando con el sistema ESP32",
+      technologies: ["Python", "FastAPI", "PostgreSQL", "Supabase"],
+      link: "https://smart-band-edge-api-platform.azurewebsites.net/docs",
+      github: "https://github.com/OscarGAV/SmartBand-Edge-Api-Platform",
+      image: "/smart-band-edge-api.png",
     },
     {
-      title: "Frontend - App de Recordatorios",
+      title: "EventRely - Frontend",
       description:
         "Aplicación móvil para la gestión de eventos y recordatorios con notificaciones push y comandos de voz",
       technologies: ["Dart", "Flutter"],
@@ -32,9 +32,9 @@ export default function Projects() {
       image: "/event-reminder-frontend.png",
     },
     {
-      title: "API REST - App de Recordatorios",
+      title: "EventRely - Backend",
       description: "Backend monolítico con DDD y CQRS para una aplicación de recordatorios con autenticación JWT",
-      technologies: ["Python", "FastAPI", "PostgreSQL"],
+      technologies: ["Python", "FastAPI", "PostgreSQL", "Supabase"],
       link: "https://eventrely-api-platform.azurewebsites.net/docs",
       github: "https://github.com/OscarGAV/eventrely-backend",
       image: "/event-reminder-backend.png",

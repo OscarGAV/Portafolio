@@ -30,7 +30,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="https://github.com/OscarGAV" className="text-2xl font-bold">
             <span className="bg-gradient-to-r from-neon-cyan to-neon-violet bg-clip-text text-transparent">
-            My DevFolio
+            Portafolio
             </span>
           </Link>
 
